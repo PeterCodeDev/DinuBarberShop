@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-black text-white font-body antialiased;
+}
+
+.luxury-bg {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.14), transparent 40%),
+    radial-gradient(circle at 85% 0%, rgba(255, 255, 255, 0.08), transparent 35%),
+    linear-gradient(180deg, #080808 0%, #000 100%);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 45%, transparent 100%);
+}
+
+.noise-overlay {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+.section-title {
+  @apply font-display text-3xl md:text-5xl tracking-wide text-white;
+  text-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.section-subtitle {
+  @apply mt-4 text-white/70 text-base md:text-lg max-w-2xl;
+}
+
+.btn-premium {
+  @apply inline-flex items-center justify-center rounded-full border border-white px-6 py-3 text-sm md:text-base font-medium uppercase tracking-wider transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:bg-white hover:text-black;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45);
+}
+
+.btn-premium:hover {
+  box-shadow: 0 14px 34px -14px rgba(255, 255, 255, 0.75);
+}
+
+.card-premium {
+  @apply rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-premium transition duration-500;
+}
+
+.card-premium:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-2px);
+}
+
+.glass-edge {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.glass-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.1) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+}
+
+.glass-edge:hover::after {
+  transform: translateX(120%);
+}
+
+.input-premium {
+  @apply w-full rounded-xl border border-white/25 bg-black/40 px-4 py-3 text-white placeholder-white/45 outline-none transition duration-300 focus:border-white focus:ring-2 focus:ring-white/30 focus:bg-white/5;
+}
+
+.highlight-text {
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.68) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes carouselZoom {
+  from {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.carousel-image-animate {
+  animation: carouselZoom 6s ease-in-out infinite alternate;
+}
+
+.float-orb {
+  animation: floatOrb 9s ease-in-out infinite;
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.barber-deco {
+  @apply pointer-events-none absolute z-10 text-white/80;
+  filter: drop-shadow(0 6px 18px rgba(255, 255, 255, 0.25));
+}
+
+.barber-deco svg {
+  width: 100%;
+  height: 100%;
+}
+
+.deco-scissors {
+  animation: scissorsSwing 3.2s ease-in-out infinite;
+  transform-origin: 50% 52%;
+}
+
+.deco-blade {
+  animation: bladeDrift 4.6s ease-in-out infinite;
+}
+
+.deco-blade-shine {
+  animation: bladeShine 2.8s ease-in-out infinite;
+}
+
+@keyframes scissorsSwing {
+  0%,
+  100% {
+    transform: rotate(-7deg) translateY(0);
+    opacity: 0.82;
+  }
+  50% {
+    transform: rotate(7deg) translateY(-8px);
+    opacity: 1;
+  }
+}
+
+@keyframes bladeDrift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(-9deg);
+  }
+  50% {
+    transform: translateX(10px) translateY(-4px) rotate(-5deg);
+  }
+}
+
+@keyframes bladeShine {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(160%);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+
+  .barber-deco {
+    opacity: 0.45;
+    filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.2));
+  }
+
+  .deco-scissors,
+  .deco-blade {
+    animation-duration: 4.2s;
+  }
+}

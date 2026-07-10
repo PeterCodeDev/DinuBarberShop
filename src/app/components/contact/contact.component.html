@@ -1,0 +1,92 @@
+<section id="contacto" class="relative px-4 py-16 sm:px-6 lg:px-8">
+  <div class="pointer-events-none absolute right-0 top-6 h-44 w-44 rounded-full bg-white/10 blur-3xl"></div>
+  <div class="barber-deco left-1 top-24 h-10 w-10 sm:left-4 sm:h-12 sm:w-12 lg:left-10 lg:h-16 lg:w-16">
+    <svg class="deco-scissors" viewBox="0 0 320 220" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="steelContactA" x1="60" y1="40" x2="260" y2="180" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f4f4f4"></stop>
+          <stop offset="0.45" stop-color="#b5b5b5"></stop>
+          <stop offset="1" stop-color="#6a6a6a"></stop>
+        </linearGradient>
+        <linearGradient id="steelContactB" x1="40" y1="200" x2="300" y2="80" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#e7e7e7"></stop>
+          <stop offset="0.5" stop-color="#909090"></stop>
+          <stop offset="1" stop-color="#fafafa"></stop>
+        </linearGradient>
+      </defs>
+      <ellipse cx="70" cy="165" rx="34" ry="30" fill="#0a0a0a" stroke="#dfdfdf" stroke-width="7"></ellipse>
+      <ellipse cx="140" cy="162" rx="34" ry="30" fill="#0a0a0a" stroke="#dfdfdf" stroke-width="7"></ellipse>
+      <ellipse cx="70" cy="165" rx="14" ry="12" fill="#010101" stroke="#8b8b8b" stroke-width="2"></ellipse>
+      <ellipse cx="140" cy="162" rx="14" ry="12" fill="#010101" stroke="#8b8b8b" stroke-width="2"></ellipse>
+      <path d="M95 150L228 34C240 23 259 34 255 49L205 103L122 158" fill="url(#steelContactA)" stroke="#d8d8d8" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M124 145L288 92C302 88 313 102 307 116L239 138L153 161" fill="url(#steelContactB)" stroke="#d8d8d8" stroke-width="6" stroke-linejoin="round"></path>
+      <path d="M226 38L208 102" stroke="#ffffff" stroke-opacity="0.65" stroke-width="2.5" stroke-linecap="round"></path>
+      <path d="M287 95L240 136" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2.5" stroke-linecap="round"></path>
+      <circle cx="186" cy="132" r="10" fill="#f0f0f0" stroke="#4e4e4e" stroke-width="3"></circle>
+      <circle cx="186" cy="132" r="3" fill="#222"></circle>
+    </svg>
+  </div>
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-10" data-aos="fade-up">
+      <h2 class="section-title">Contacto y Pedidos</h2>
+      <p class="section-subtitle">
+        Reserva tu cita o solicita productos desde este formulario. Diseño listo para integración con EmailJS o API REST.
+      </p>
+    </div>
+
+    <div class="card-premium glass-edge p-6 sm:p-8 lg:p-10" data-aos="fade-up" data-aos-delay="80">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="grid gap-6">
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <label class="mb-2 block text-sm text-white/75">Nombre</label>
+            <input type="text" class="input-premium" formControlName="name" placeholder="Tu nombre">
+            <p *ngIf="f.name.touched && f.name.invalid" class="mt-2 text-xs text-red-300">Introduce un nombre válido.</p>
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm text-white/75">Correo electrónico</label>
+            <input type="email" class="input-premium" formControlName="email" placeholder="tu@email.com">
+            <p *ngIf="f.email.touched && f.email.invalid" class="mt-2 text-xs text-red-300">Introduce un correo válido.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <label class="mb-2 block text-sm text-white/75">Teléfono</label>
+            <input type="tel" class="input-premium" formControlName="phone" placeholder="+34 600 000 000">
+            <p *ngIf="f.phone.touched && f.phone.invalid" class="mt-2 text-xs text-red-300">Introduce un teléfono válido.</p>
+          </div>
+
+          <div>
+            <label class="mb-2 block text-sm text-white/75">Tipo de solicitud</label>
+            <select class="input-premium" formControlName="requestType">
+              <option value="Reserva">Reserva</option>
+              <option value="Producto">Producto</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="mb-2 block text-sm text-white/75">Mensaje</label>
+          <textarea
+            rows="5"
+            class="input-premium resize-none"
+            formControlName="message"
+            placeholder="Describe tu reserva o pedido"></textarea>
+          <p *ngIf="f.message.touched && f.message.invalid" class="mt-2 text-xs text-red-300">
+            El mensaje debe tener entre 10 y 500 caracteres.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <button type="submit" class="btn-premium w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60" [disabled]="sending">
+            {{ sending ? 'Enviando...' : 'Enviar solicitud' }}
+          </button>
+
+          <p *ngIf="sendMessage" class="text-sm text-green-300">{{ sendMessage }}</p>
+          <p *ngIf="sendError" class="text-sm text-red-300">{{ sendError }}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
