@@ -211,11 +211,97 @@ body {
 
   .barber-deco {
     opacity: 0.45;
-    filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.25));
   }
 
   .deco-scissors,
   .deco-blade {
     animation-duration: 4.2s;
   }
+}
+
+/* Custom Professional Gray Cursor Styles */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  will-change: transform;
+  transition: 
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+    width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+    height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+    margin 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+    background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+    border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(156, 163, 175, 0.85); /* Premium solid-ish gray */
+  margin-top: -4px;
+  margin-left: -4px;
+  z-index: 10000;
+  box-shadow: 0 0 10px rgba(156, 163, 175, 0.2);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(156, 163, 175, 0.45); /* Translucent gray outer ring */
+  margin-top: -18px;
+  margin-left: -18px;
+  z-index: 9999;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Visibility state */
+.cursor-dot.visible, .cursor-ring.visible {
+  opacity: 1;
+}
+
+/* Hover over interactive element state */
+.cursor-ring.hovered {
+  width: 54px;
+  height: 54px;
+  margin-top: -27px;
+  margin-left: -27px;
+  border-color: rgba(156, 163, 175, 0.95);
+  background-color: rgba(156, 163, 175, 0.1);
+  box-shadow: 0 0 20px rgba(156, 163, 175, 0.15);
+}
+
+.cursor-dot.hovered {
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  margin-left: -2px;
+  background-color: #ffffff;
+}
+
+/* Mouse click state */
+.cursor-ring.clicked {
+  width: 28px;
+  height: 28px;
+  margin-top: -14px;
+  margin-left: -14px;
+  border-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(156, 163, 175, 0.25);
+}
+
+/* Hide default cursor globally on mouse devices when custom cursor is loaded */
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active input,
+body.custom-cursor-active textarea,
+body.custom-cursor-active select,
+body.custom-cursor-active [role="button"],
+body.custom-cursor-active .interactive-element {
+  cursor: none !important;
 }
