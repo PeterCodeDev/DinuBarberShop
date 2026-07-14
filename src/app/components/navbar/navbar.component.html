@@ -15,6 +15,7 @@
 
     <ul class="hidden items-center gap-8 text-sm uppercase tracking-[0.18em] md:flex">
       <li><a routerLink="/" fragment="inicio" class="text-white/80 transition hover:text-white">Inicio</a></li>
+      <li><a routerLink="/" fragment="servicios" class="text-white/80 transition hover:text-white">Servicios</a></li>
       <li>
         <a href="https://www.instagram.com/dinubarbershop/" target="_blank" rel="noopener noreferrer" class="text-white/80 transition hover:text-white">
           Instagram
@@ -28,6 +29,7 @@
   <div *ngIf="menuOpen" class="border-t border-white/10 bg-black px-6 pb-5 pt-4 md:hidden">
     <ul class="space-y-3 text-sm uppercase tracking-wider">
       <li><a routerLink="/" fragment="inicio" class="block text-white/85" (click)="closeMenu()">Inicio</a></li>
+      <li><a routerLink="/" fragment="servicios" class="block text-white/85" (click)="closeMenu()">Servicios</a></li>
       <li>
         <a href="https://www.instagram.com/dinubarbershop/" target="_blank" rel="noopener noreferrer" class="block text-white/85" (click)="closeMenu()">
           Instagram
